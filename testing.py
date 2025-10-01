@@ -14,4 +14,23 @@ else:
     print("❌ Import failed or file was not found.\n")
 
 # Uncomment this to print entire deck
-# pprint.pprint(get_deck('data/', troops, spells))
+# pprint.pprint(get_data.get_deck('data/', troops, spells))
+
+# making Decks with Card cards
+d = get_data.get_deck('data/', troops, spells)
+deck = []
+for i in range(12):
+    sc_key = d[i["sc_key"]]
+    type = d[i["type"]]
+    elixir = d[i["elixir"]]
+    combat = d[i["combat_stats"]]
+    damage = d[i["damage"]]
+    mechanics = d[i["mechanics"]]
+    synergies = d[i["synergies"]]
+    counters = d[i["counters"]]
+    d.append(Card(sc_key, elixir, type, combat, damage, mechanics, counters, synergies))
+
+print(deck)
+
+
+
