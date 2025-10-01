@@ -1,15 +1,6 @@
-"""
-How to test
-
-import get_data
-
-print(get_data.get_data("data/spells"))
-
-"""
-
 import json
 
-def get_data(file_path):
+def load_data(file_path):
     """
     Pull JSON data from file and return a dictionary
     """
@@ -31,4 +22,47 @@ def get_data(file_path):
     except Exception as e: 
         print(f"An unexpected error occurred: {e}")
 
+def get_deck(file_path, troops, spells):
+    """                                                                                                                                       
+    Pull card data from dictionary
+
+    file_path - path to the folder holding the JSON data
+    troops - troop name list
+    spells - spell name list
     
+    """
+
+    try:
+
+        # This will be our eight card deck
+        deck = []
+
+        # Load the troop JSON data into a dictionary
+        troop_data = load_data(file_path + 'troops.json')
+
+        # Traverse the troop deck
+        for card in troop_data['troops']:
+
+            # Keep only the troop cards we want
+            if card['sc_key'] in troops:
+
+                # Add to deck
+                deck.append(card)
+
+        # Repeat for spells
+        spell_data = load_data(file_path + 'spells.json')
+
+        # Do the same for spells
+        for card in spell_data['spells']:
+
+            # Keep only the spell cards we want   
+            if card['sc_key'] in spells:
+
+                # Add to deck                                                                                                                 
+                deck.append(card)
+
+        return deck
+    
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+

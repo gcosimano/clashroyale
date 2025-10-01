@@ -1,21 +1,17 @@
-import json
+import get_data
+import pprint
 
-filePath = 'troops.json'
+troops = ['Musketeer', 'Knight', 'Archers', 'Giant', 'Minions', 'Mini Pekka', 'Spear Goblins', 'Goblins', 'Goblin Cage']
+spells = ['Fireball', 'Arrows']
 
-try:
-    with open(filePath, 'r') as file:
-        # upload is reference to json file
-        upload = json.load(file)
+deck = get_data.get_deck('data/', troops, spells)
 
-
-except FileNotFoundError:
-    print(f"Error: The file {filePath} was not found.")
-    exit()
-
-
-if upload is not None:
-    print("✅ Import successful!")
-    print(f"Data Type: {type(data)}")
-    print(f"First 50 characters of data: {str(data)[:50]}...")
+if deck is not None:
+    print("\n✅ Import successful!")
+    print(f"Data Type: {type(deck)}")
+    print(f"First 50 characters of data: {str(deck)[:50]}...\n")
 else:
-    print("❌ Import failed or file was not found.")
+    print("❌ Import failed or file was not found.\n")
+
+# Uncomment this to print entire deck
+# pprint.pprint(get_deck('data/', troops, spells))
