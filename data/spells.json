@@ -1,0 +1,538 @@
+{
+  "spells": [
+    {
+      "sc_key": "Arrows",
+      "id": 26000024,
+      "elixir": 3,
+      "type": "Spell",
+      "rarity": "Common",
+      "arena": 0,
+      "description": "Arrows pepper a large area, damaging everyone hit. Reduced damage to Crown Towers.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 159, "12": 175, "13": 192, "14": 211, "15": 232},
+        "crown_tower_damage": {"11": 64, "12": 70, "13": 77, "14": 84, "15": 93}
+      },
+      "mechanics": {
+        "radius": 4,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "special_abilities": ["Area Damage", "Tower Damage Reduction"],
+      "counters": ["Minions", "Skeleton Army", "Goblin Gang"],
+      "synergies": ["Bait decks", "Cycle decks", "Anti-swarm"]
+    },
+    {
+      "sc_key": "Fireball",
+      "id": 26000025,
+      "elixir": 4,
+      "type": "Spell",
+      "rarity": "Rare",
+      "arena": 0,
+      "description": "Annihilates a small area with a big explosion. Deals high damage and knocks back troops.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 572, "12": 629, "13": 692, "14": 761, "15": 837},
+        "crown_tower_damage": {"11": 229, "12": 252, "13": 277, "14": 304, "15": 335}
+      },
+      "mechanics": {
+        "radius": 2.5,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "special_abilities": ["Area Damage", "Knockback", "Tower Damage Reduction"],
+      "counters": ["Wizard", "Musketeer", "Three Musketeers"],
+      "synergies": ["Beatdown", "Control", "Spell bait"]
+    },
+    {
+      "sc_key": "Zap",
+      "id": 26000026,
+      "elixir": 2,
+      "type": "Spell",
+      "rarity": "Common",
+      "arena": 5,
+      "description": "Zaps enemies, briefly stunning them and dealing damage. Affects a small area.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": true,
+      "combat_stats": {
+        "damage": {"11": 159, "12": 175, "13": 192, "14": 211, "15": 232},
+        "crown_tower_damage": {"11": 64, "12": 70, "13": 77, "14": 84, "15": 93}
+      },
+      "mechanics": {
+        "radius": 2.5,
+        "stun_duration": 0.5,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "special_abilities": ["Area Damage", "Stun", "Reset by Zap", "Tower Damage Reduction"],
+      "counters": ["Inferno Dragon", "Inferno Tower", "Sparky"],
+      "synergies": ["Cycle decks", "Reset combos", "Hog Rider"]
+    },
+    {
+      "sc_key": "Lightning",
+      "id": 26000027,
+      "elixir": 6,
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 5,
+      "description": "Strikes the 3 enemies with the highest hitpoints in the target area. Reduced damage to Crown Towers.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 572, "12": 629, "13": 692, "14": 761, "15": 837},
+        "crown_tower_damage": {"11": 229, "12": 252, "13": 277, "14": 304, "15": 335}
+      },
+      "mechanics": {
+        "radius": 3.5,
+        "stun_duration": 0.5,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "target_count": 3,
+        "count": 1
+      },
+      "special_abilities": ["Multi-target", "Stun", "Tower Damage Reduction"],
+      "counters": ["Three Musketeers", "Elixir Collector", "Buildings"],
+      "synergies": ["Beatdown", "Heavy spell decks", "Control"]
+    },
+    {
+      "sc_key": "Rage",
+      "id": 26000028,
+      "elixir": 2,
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 6,
+      "description": "Increases troops' movement and attack speed dramatically. Buildings attack faster and summon troops quicker too.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "speed_boost": "35%",
+        "attack_speed_boost": "35%"
+      },
+      "mechanics": {
+        "radius": 5,
+        "duration": 6,
+        "deploy_time": 1,
+        "targets": "Friendly",
+        "count": 1
+      },
+      "special_abilities": ["Speed Boost", "Attack Speed Boost"],
+      "counters": ["Defensive buildings", "Swarm troops", "Area damage"],
+      "synergies": ["Lumberjack", "Ebarbs", "Bridge spam"]
+    },
+    {
+      "sc_key": "Freeze",
+      "id": 26000029,
+      "elixir": 4,
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 4,
+      "description": "Freezes troops and buildings, making them unable to move or attack. Everybody chill.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 95, "12": 105, "13": 115, "14": 127, "15": 139},
+        "crown_tower_damage": {"11": 38, "12": 42, "13": 46, "14": 51, "15": 56}
+      },
+      "mechanics": {
+        "radius": 3,
+        "duration": 4,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "special_abilities": ["Freeze", "Area Damage", "Tower Damage Reduction"],
+      "counters": ["Prediction", "Defensive buildings", "Spread out troops"],
+      "synergies": ["Balloon", "Hog Rider", "Surprise attacks"]
+    },
+    {
+      "sc_key": "Mirror",
+      "id": 26000030,
+      "elixir": "Variable",
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 1,
+      "description": "Mirrors your last card played for +1 Elixir",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "level_boost": "+1",
+        "elixir_cost": "+1"
+      },
+      "mechanics": {
+        "deploy_time": 1,
+        "targets": "None",
+        "count": 1
+      },
+      "special_abilities": ["Clone", "Level Boost"],
+      "counters": ["Expensive cards", "Poor cycling", "Bad timing"],
+      "synergies": ["Bait decks", "Surprise factor", "Spell cycling"]
+    },
+    {
+      "sc_key": "Rocket",
+      "id": 26000031,
+      "elixir": 6,
+      "type": "Spell",
+      "rarity": "Rare",
+      "arena": 3,
+      "description": "Deals high damage to a small area. Looks really awesome doing it. Reduced damage to Crown Towers.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 1014, "12": 1115, "13": 1226, "14": 1349, "15": 1484},
+        "crown_tower_damage": {"11": 406, "12": 446, "13": 490, "14": 540, "15": 594}
+      },
+      "mechanics": {
+        "radius": 2,
+        "deploy_time": 4,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "special_abilities": ["Area Damage", "Tower Damage Reduction"],
+      "counters": ["PEKKA", "Golem", "High HP troops"],
+      "synergies": ["Spell cycle", "Control", "Win condition"]
+    },
+    {
+      "sc_key": "GoblinBarrel",
+      "id": 26000032,
+      "elixir": 3,
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 1,
+      "description": "Spawns three Goblins anywhere in the Arena. It's going to be a thrilling ride, boys!",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": true,
+      "combat_stats": {
+        "damage": {"11": 159, "12": 175, "13": 192, "14": 211, "15": 232}
+      },
+      "mechanics": {
+        "deploy_time": 1.2,
+        "targets": "Ground",
+        "count": 3
+      },
+      "spawner_info": {
+        "troop_spawned": "Goblins",
+        "spawn_count": 3
+      },
+      "special_abilities": ["Deploy Anywhere", "Spawns Troops"],
+      "counters": ["The Log", "Arrows", "Barbarian Barrel"],
+      "synergies": ["Bait decks", "Princess", "Goblin Gang"]
+    },
+    {
+      "sc_key": "Tornado",
+      "id": 26000033,
+      "elixir": 3,
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 8,
+      "description": "Drags enemy troops to its center while dealing damage over time. Doesn't affect buildings.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 159, "12": 175, "13": 192, "14": 211, "15": 232},
+        "crown_tower_damage": {"11": 32, "12": 35, "13": 38, "14": 42, "15": 46}
+      },
+      "mechanics": {
+        "radius": 5.5,
+        "duration": 2.5,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "special_abilities": ["Pull Effect", "Damage Over Time", "Tower Damage Reduction"],
+      "counters": ["Buildings", "Single target troops", "Spread formations"],
+      "synergies": ["Executioner", "Rocket", "King Tower activation"]
+    },
+    {
+      "sc_key": "Clone",
+      "id": 26000034,
+      "elixir": 3,
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 11,
+      "description": "Duplicates all friendly troops in the target area. Cloned troops have reduced hitpoints and cannot be cloned again.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "clone_hp_reduction": "1 HP"
+      },
+      "mechanics": {
+        "radius": 3,
+        "deploy_time": 1,
+        "targets": "Friendly",
+        "count": 1
+      },
+      "special_abilities": ["Clone", "No Starting Hand"],
+      "counters": ["Splash damage", "Spells", "Area damage"],
+      "synergies": ["Lava Hound", "Giant Skeleton", "Night Witch"]
+    },
+    {
+      "sc_key": "Earthquake",
+      "id": 26000035,
+      "elixir": 3,
+      "type": "Spell",
+      "rarity": "Rare",
+      "arena": 6,
+      "description": "Deals damage over time to buildings and slows down troops. Reduced damage to Crown Towers.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 191, "12": 210, "13": 231, "14": 254, "15": 279},
+        "crown_tower_damage": {"11": 76, "12": 84, "13": 92, "14": 102, "15": 112},
+        "building_damage": {"11": 573, "12": 630, "13": 693, "14": 762, "15": 837}
+      },
+      "mechanics": {
+        "radius": 3.5,
+        "duration": 3,
+        "slow_duration": 5,
+        "deploy_time": 1,
+        "targets": "Ground",
+        "count": 1
+      },
+      "special_abilities": ["Damage Over Time", "Slow", "Building Damage", "Tower Damage Reduction"],
+      "counters": ["Tesla", "X-Bow", "Mortar"],
+      "synergies": ["Hog Rider", "Miner", "Royal Giant"]
+    },
+    {
+      "sc_key": "Poison",
+      "id": 26000036,
+      "elixir": 4,
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 5,
+      "description": "Covers a large area in a poisonous cloud that deals damage over time and slows enemy movement and attack speed.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 67, "12": 74, "13": 81, "14": 89, "15": 98},
+        "crown_tower_damage": {"11": 27, "12": 30, "13": 32, "14": 36, "15": 39},
+        "total_damage": {"11": 603, "12": 666, "13": 729, "14": 801, "15": 882}
+      },
+      "mechanics": {
+        "radius": 3.5,
+        "duration": 9,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "special_abilities": ["Damage Over Time", "Slow", "Tower Damage Reduction"],
+      "counters": ["Graveyard", "Three Musketeers", "Swarm troops"],
+      "synergies": ["Giant", "Graveyard", "Control decks"]
+    },
+    {
+      "sc_key": "TheLog",
+      "id": 26000037,
+      "elixir": 2,
+      "type": "Spell",
+      "rarity": "Legendary",
+      "arena": 6,
+      "description": "A spiky log rolls through the Arena, damaging and knocking back enemies! Reduced damage to Crown Towers.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 240, "12": 264, "13": 290, "14": 319, "15": 351},
+        "crown_tower_damage": {"11": 96, "12": 106, "13": 116, "14": 128, "15": 140}
+      },
+      "mechanics": {
+        "width": 3.9,
+        "length": 11.1,
+        "deploy_time": 1.2,
+        "targets": "Ground",
+        "count": 1
+      },
+      "special_abilities": ["Linear Damage", "Knockback", "Tower Damage Reduction"],
+      "counters": ["Goblin Barrel", "Princess", "Skeleton Army"],
+      "synergies": ["Bait decks", "Chip damage", "Control"]
+    },
+    {
+      "sc_key": "GiantSnowball",
+      "id": 26000038,
+      "elixir": 2,
+      "type": "Spell",
+      "rarity": "Common",
+      "arena": 5,
+      "description": "Rolls through enemies, dealing damage and slowing them down. Knocks back on hit, slower enemies pack a punch!",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": true,
+      "combat_stats": {
+        "damage": {"11": 159, "12": 175, "13": 192, "14": 211, "15": 232},
+        "crown_tower_damage": {"11": 64, "12": 70, "13": 77, "14": 84, "15": 93}
+      },
+      "mechanics": {
+        "radius": 3,
+        "slow_duration": 2.5,
+        "deploy_time": 1.2,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "special_abilities": ["Area Damage", "Slow", "Knockback", "Tower Damage Reduction"],
+      "counters": ["Minions", "Bats", "Swarm troops"],
+      "synergies": ["Miner", "Hog Rider", "Control"]
+    },
+    {
+      "sc_key": "BarbarianBarrel",
+      "id": 26000039,
+      "elixir": 2,
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 9,
+      "description": "It rolls over enemies, damaging and knocking them back. Then, a Barbarian pops out to fight! Reduced damage to Crown Towers.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 159, "12": 175, "13": 192, "14": 211, "15": 232},
+        "crown_tower_damage": {"11": 64, "12": 70, "13": 77, "14": 84, "15": 93}
+      },
+      "mechanics": {
+        "width": 2.6,
+        "length": 11.1,
+        "deploy_time": 2.5,
+        "targets": "Ground",
+        "count": 1
+      },
+      "spawner_info": {
+        "troop_spawned": "Barbarian",
+        "spawn_count": 1
+      },
+      "special_abilities": ["Linear Damage", "Knockback", "Spawns Troops", "Tower Damage Reduction"],
+      "counters": ["Goblin Barrel", "Princess", "Swarm troops"],
+      "synergies": ["Control decks", "Bait decks", "Chip damage"]
+    },
+    {
+      "sc_key": "RoyalDelivery",
+      "id": 26000040,
+      "elixir": 3,
+      "type": "Spell",
+      "rarity": "Common",
+      "arena": 7,
+      "description": "Deals area damage with a 2 second delay, then spawns a Royal Recruit. Can only be placed on your side of the Arena!",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 159, "12": 175, "13": 192, "14": 211, "15": 232}
+      },
+      "mechanics": {
+        "radius": 3,
+        "delay": 2,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "spawner_info": {
+        "troop_spawned": "Royal Recruit",
+        "spawn_count": 1
+      },
+      "special_abilities": ["Spawn Damage", "Spawns Troops", "Delayed Effect"],
+      "counters": ["Offensive placement", "Prediction", "Fast troops"],
+      "synergies": ["Defensive decks", "Control", "Anti-air"]
+    },
+    {
+      "sc_key": "Void",
+      "id": 26000041,
+      "elixir": 4,
+      "type": "Spell",
+      "rarity": "Epic",
+      "arena": 15,
+      "description": "A mysterious spell that creates a void, pulling enemies toward its center and dealing damage over time.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 95, "12": 105, "13": 115, "14": 127, "15": 139},
+        "crown_tower_damage": {"11": 38, "12": 42, "13": 46, "14": 51, "15": 56}
+      },
+      "mechanics": {
+        "radius": 4,
+        "duration": 3.5,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "special_abilities": ["Pull Effect", "Damage Over Time", "Tower Damage Reduction"],
+      "counters": ["Buildings", "Spread formations", "Single target troops"],
+      "synergies": ["Rocket", "Lightning", "Control decks"]
+    },
+    {
+      "sc_key": "GoblinCurse",
+      "id": 26000042,
+      "elixir": 2,
+      "type": "Spell",
+      "rarity": "Rare",
+      "arena": 17,
+      "description": "Curses enemy troops, increasing damage they take and spawning Goblins when they die.",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "damage": {"11": 95, "12": 105, "13": 115, "14": 127, "15": 139},
+        "damage_amplification": "15%"
+      },
+      "mechanics": {
+        "radius": 3,
+        "duration": 8,
+        "deploy_time": 1,
+        "targets": "Air & Ground",
+        "count": 1
+      },
+      "spawner_info": {
+        "troop_spawned": "Goblins",
+        "spawn_condition": "On enemy death"
+      },
+      "special_abilities": ["Damage Over Time", "Spawns Troops", "Damage Amplification"],
+      "counters": ["Low HP troops", "Single target troops", "Buildings"],
+      "synergies": ["Anti-swarm", "Control decks", "Spell combos"]
+    },
+    {
+      "sc_key": "Graveyard",
+      "id": 26000043,
+      "elixir": 5,
+      "type": "Spell",
+      "rarity": "Legendary",
+      "arena": 9,
+      "description": "Spawns Skeletons anywhere in the Arena over time. A spooky surprise for your enemies!",
+      "evolved_spells_sc_key": "",
+      "is_evolved": false,
+      "has_evolution": false,
+      "combat_stats": {
+        "skeleton_count": 15
+      },
+      "mechanics": {
+        "radius": 4,
+        "duration": 10,
+        "spawn_rate": 0.5,
+        "deploy_time": 1,
+        "targets": "Ground",
+        "count": 1
+      },
+      "spawner_info": {
+        "troop_spawned": "Skeletons",
+        "spawn_count": 15,
+        "spawn_duration": 10
+      },
+      "special_abilities": ["Deploy Anywhere", "Spawns Troops", "Duration Effect"],
+      "counters": ["Poison", "Arrows", "Valkyrie"],
+      "synergies": ["Tank troops", "Poison", "Freeze"]
+    }
+  ]
+}
