@@ -20,21 +20,25 @@ else:
 # making Decks with Card cards
 d = get_data.get_deck('data/', troops, spells)
 deck = []
-for i in range(len(d)-1):
-    print(i)
+for i in range(len(d)):
     sc_key = d[i]["sc_key"]
     type = d[i]["type"]
     elixir = d[i]["elixir"]
     combat = d[i]["combat_stats"]
+
+    if 'damage' in d[i]['combat_stats']:
+        damage = d[i]["combat_stats"]['damage']
+    else:
+        damage = {}
+
     mechanics = d[i]["mechanics"]
     synergies = d[i]["synergies"]
     counters = d[i]["counters"]
-    a = Card.Card(sc_key, elixir, type, combat, mechanics, counters, synergies, 1)
+    a = Card.Card(sc_key, elixir, type, combat, mechanics, damage, counters, synergies)
     deck.append(a)
 
-# print(deck)
-print(deck[0])
-print(deck[0]['sc_key'])
+# Each element of the deck list is a Card object and not a dictionary
+print(deck[0].sc_key)
 
 
 
