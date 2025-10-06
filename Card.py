@@ -9,4 +9,11 @@ class Card:
         self.damage = damage
         self.mechanics = mechanics
         self.counters = counters
-        self.synergies = synergies    
+        self.synergies = synergies  
+        self.x = None
+        self.y = None 
+
+
+    def setPos(self, newX, newY):
+        self.x = newX
+        self.y = newY
