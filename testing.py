@@ -1,16 +1,19 @@
 import get_data
 import Card
 import pprint
+import json
 
 troops = ['Musketeer', 'Knight', 'Archers', 'Giant', 'Minions', 'Mini Pekka', 'Spear Goblins', 'Goblins', 'Goblin Cage']
 spells = ['Fireball', 'Arrows']
+
+valid = troops + spells
 
 deck = get_data.get_deck('data/', troops, spells)
 
 if deck is not None:
     print("\n✅ Import successful!")
-    print(f"Data Type: {type(deck)}")
-    print(f"First 50 characters of data: {str(deck)[:50]}...\n")
+   # print(f"Data Type: {type(deck)}")
+   # print(f"First 50 characters of data: {str(deck)[:50]}...\n")
 else:
     print("❌ Import failed or file was not found.\n")
 
@@ -18,27 +21,50 @@ else:
 # pprint.pprint(get_data.get_deck('data/', troops, spells))
 
 # making Decks with Card cards
-d = get_data.get_deck('data/', troops, spells)
-deck = []
-for i in range(len(d)):
-    sc_key = d[i]["sc_key"]
-    type = d[i]["type"]
-    elixir = d[i]["elixir"]
-    combat = d[i]["combat_stats"]
-
-    if 'damage' in d[i]['combat_stats']:
-        damage = d[i]["combat_stats"]['damage']
-    else:
-        damage = {}
-
-    mechanics = d[i]["mechanics"]
-    synergies = d[i]["synergies"]
-    counters = d[i]["counters"]
-    a = Card.Card(sc_key, elixir, type, combat, mechanics, damage, counters, synergies)
-    deck.append(a)
-
-# Each element of the deck list is a Card object and not a dictionary
-print(deck[0].sc_key)
 
 
+file_path = 'troops.json'
+with open(file_path, 'r') as file:
+            json_data = json.load(file)
 
+    # Each object in list is a Card object
+list_of_objects = []
+list_of_objects_computer = []
+
+    # For every troop card
+for x in json_data['troops']:
+        if x['sc_key'] in valid:
+
+                # Create the Card object 
+                if 'damage' in x['combat_stats']:
+                    obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
+                            x['combat_stats'].get('damage', {}),
+                            (x['mechanics']['speed']/60), x['counters'], x['synergies'], True) # type: ignore
+                else:
+                    print(f"Warning: {x['sc_key']} has no damage stats!")
+                    obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
+                            {}, # Deal with this error somehow
+                            (x['mechanics']['speed']/60), x['counters'], x['synergies'], True) # type: ignore
+                    
+                # Append to the list 
+        list_of_objects.append(obj)   
+
+for x in json_data['troops']:
+
+        # Create the Card object 
+        if x['sc_key'] in valid:
+            if 'damage' in x['combat_stats']:
+                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
+                        x['combat_stats'].get('damage', {}),
+                        (x['mechanics']['speed']/60), x['counters'], x['synergies'], False) # type: ignore
+            else:
+                print(f"Warning: {x['sc_key']} has no damage stats!")
+                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
+                        {}, # Deal with this error somehow
+                        (x['mechanics']['speed']/60), x['counters'], x['synergies'], False) # type: ignore
+                
+        # Append to the list 
+        list_of_objects_computer.append(obj)  
+
+print(list_of_objects)
+print(list_of_objects_computer)
