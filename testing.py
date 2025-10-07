@@ -11,7 +11,7 @@ valid = troops + spells
 deck = get_data.get_deck('data/', troops, spells)
 
 if deck is not None:
-    print("\n✅ Import successful!")
+    print("\n✅ Import successful! hello")
    # print(f"Data Type: {type(deck)}")
    # print(f"First 50 characters of data: {str(deck)[:50]}...\n")
 else:
@@ -33,38 +33,37 @@ list_of_objects_computer = []
 
     # For every troop card
 for x in json_data['troops']:
-        if x['sc_key'] in valid:
+    if x['sc_key'] in valid:
 
-                # Create the Card object 
-                if 'damage' in x['combat_stats']:
-                    obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
-                            x['combat_stats'].get('damage', {}),
-                            (x['mechanics']['speed']/60), x['counters'], x['synergies'], True) # type: ignore
-                else:
-                    print(f"Warning: {x['sc_key']} has no damage stats!")
-                    obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
-                            {}, # Deal with this error somehow
-                            (x['mechanics']['speed']/60), x['counters'], x['synergies'], True) # type: ignore
+        # Create the Card object 
+        if 'damage' in x['combat_stats']:
+            obj = Card.Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
+                    (x['mechanics']['speed']/60), x['counters'], x['synergies'], True) # type: ignore
+        else:
+            print(f"Warning: {x['sc_key']} has no damage stats!")
+            obj = Card.Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
+                    {}, # Deal with this error somehow
+                    (x['mechanics']['speed']/60), x['counters'], x['synergies'], True) # type: ignore
                     
                 # Append to the list 
         list_of_objects.append(obj)   
 
 for x in json_data['troops']:
 
-        # Create the Card object 
-        if x['sc_key'] in valid:
-            if 'damage' in x['combat_stats']:
-                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
-                        x['combat_stats'].get('damage', {}),
-                        (x['mechanics']['speed']/60), x['counters'], x['synergies'], False) # type: ignore
-            else:
-                print(f"Warning: {x['sc_key']} has no damage stats!")
-                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
-                        {}, # Deal with this error somehow
-                        (x['mechanics']['speed']/60), x['counters'], x['synergies'], False) # type: ignore
-                
+     # Create the Card object 
+    if x['sc_key'] in valid:
+        if 'damage' in x['combat_stats']:
+            obj = Card.Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
+                    (x['mechanics']['speed']/60), x['counters'], x['synergies'], False) # type: ignore
+        else:
+            print(f"Warning: {x['sc_key']} has no damage stats!")
+            obj = Card.Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
+                    {}, # Deal with this error somehow
+                    (x['mechanics']['speed']/60), x['counters'], x['synergies'], False) # type: ignore
+            
         # Append to the list 
         list_of_objects_computer.append(obj)  
 
-print(list_of_objects)
-print(list_of_objects_computer)
+
+for x in list_of_objects:
+    print(x.sc_key)
