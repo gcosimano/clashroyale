@@ -7,4 +7,5 @@
 - [x] Import Clash Data
   - [x] Store JSON files locally
   - [x] Create JSON reader library
-- [ ] Determine how to place cards on tiles
+- [x] Determine how to place cards on tiles
+- [ ] (Emilee added) Determine how to move cards
