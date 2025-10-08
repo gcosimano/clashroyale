@@ -28,8 +28,8 @@ with open(file_path, 'r') as file:
             json_data = json.load(file)
 
     # Each object in list is a Card object
-list_of_objects = []
-list_of_objects_computer = []
+user_deck = []
+computer_deck = []
 
     # For every troop card
 for x in json_data['troops']:
@@ -46,7 +46,7 @@ for x in json_data['troops']:
                     (x['mechanics']['speed']/60), x['counters'], x['synergies'], True) # type: ignore
                     
                 # Append to the list 
-        list_of_objects.append(obj)   
+        user_deck.append(obj)   
 
 for x in json_data['troops']:
 
@@ -62,8 +62,8 @@ for x in json_data['troops']:
                     (x['mechanics']['speed']/60), x['counters'], x['synergies'], False) # type: ignore
             
         # Append to the list 
-        list_of_objects_computer.append(obj)  
+        computer_deck.append(obj)  
 
 
-for x in list_of_objects:
+for x in user_deck:
     print(x.sc_key)

@@ -10,4 +10,5 @@ class Card:
         self.speed = speed
         self.counters = counters
         self.synergies = synergies
-        self.is_user = is_user    
+        self.is_user = is_user
+        self.path_list = path_list    
