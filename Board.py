@@ -1,4 +1,5 @@
 from Card import Card
+<<<<<<< HEAD
 from Tower import Tower, KingTower
 
 class Board:
@@ -12,6 +13,11 @@ class Board:
 
 
     def __init__(self, length=18, width=29):
+=======
+
+class Board:
+    def __init__(self, length=32, width=15):
+>>>>>>> b26aa81 (add tower locations and place card method)
         # Initialize the 2D array using nested list comprehensions:
         # Outer loop controls the rows (length/X)
         # Inner loop controls the columns (width/Y)
@@ -20,6 +26,7 @@ class Board:
             for _ in range(length)
         ]
 
+<<<<<<< HEAD
         #placing Towers on their appropriate squares
         #princess L computer -----col=y (4,7), row=x (2,4)
         for r in range(2,5):
@@ -77,3 +84,14 @@ board = Board()
 # card automatically goes to left or right bridge depending on which is closer
 # if card is place on y coord below or equal to towers, it goes straight up past them, diagonal to path, and straight up path
 '''
+=======
+
+
+
+    # need to add smthing to make sure the coords aren't out of bounds
+    def place_card(self, obj, x, y):
+        self.board[x][y] = obj
+        obj.setPos(x, y)
+        print(f"x: {x} y: {y}")
+
+>>>>>>> b26aa81 (add tower locations and place card method)
