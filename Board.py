@@ -2,15 +2,6 @@ from Card import Card
 from Tower import Tower, KingTower
 
 class Board:
-    #creating towers to go into board array, level 1 towers
-    princess_L_user = Tower.Tower(50, 7.5, 2400, False)
-    princess_R_user = Tower.Tower(50, 7.5, 2400, False)
-    princess_L_computer = Tower.Tower(50, 7.5, 2400, False)
-    princess_R_computer = Tower.Tower(50, 7.5, 2400, False)
-    king_user = Tower.KingTower(50, 7, 2400, False, False)
-    king_computer = Tower.KingTower(50, 7, 2400, False, False)
-
-
     def __init__(self, length=31, width=17):
         # Initialize the 2D array using nested list comprehensions:
         # Outer loop controls the rows (length/X)
@@ -19,6 +10,14 @@ class Board:
             [None for _ in range(width)] 
             for _ in range(length)
         ]
+
+        #creating towers to go into board array, level 1 towers
+        self.princess_L_user = Tower(50, 7.5, 2400, False)
+        self.princess_R_user = Tower(50, 7.5, 2400, False)
+        self.princess_L_computer = Tower(50, 7.5, 2400, False)
+        self.princess_R_computer = Tower(50, 7.5, 2400, False)
+        self.king_user = KingTower(50, 7, 2400, False, False)
+        self.king_computer = KingTower(50, 7, 2400, False, False)
 
         #placing Towers on their appropriate squares
         #princess L computer -----col=y (2,4), row=x (5,7)
@@ -51,12 +50,11 @@ class Board:
             for c in range(7,11):
                 self.board[r][c] = self.king_user   
 
-
-# need to add smthing to make sure the coords aren't out of bounds
-def place_card(self, obj, x, y):
-    self.board[x][y] = obj
-    obj.setPos(x, y)
-    print(f"x: {x} y: {y}")
+    # need to add smthing to make sure the coords aren't out of bounds
+    def place_card(self, obj, x, y):
+        self.board[x][y] = obj
+        obj.setPos(x, y)
+        print(f"x: {x} y: {y}")
 
 
 '''
