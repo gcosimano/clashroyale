@@ -1,5 +1,4 @@
 from Card import Card
-<<<<<<< HEAD
 from Tower import Tower, KingTower
 
 class Board:
@@ -12,12 +11,7 @@ class Board:
     king_computer = Tower.KingTower(50, 7, 2400, False, False)
 
 
-    def __init__(self, length=18, width=29):
-=======
-
-class Board:
-    def __init__(self, length=32, width=15):
->>>>>>> b26aa81 (add tower locations and place card method)
+    def __init__(self, length=31, width=17):
         # Initialize the 2D array using nested list comprehensions:
         # Outer loop controls the rows (length/X)
         # Inner loop controls the columns (width/Y)
@@ -26,52 +20,43 @@ class Board:
             for _ in range(length)
         ]
 
-<<<<<<< HEAD
         #placing Towers on their appropriate squares
-        #princess L computer -----col=y (4,7), row=x (2,4)
-        for r in range(2,5):
-            for c in range(4,8):
-                self.board[r][c] = princess_L_computer
+        #princess L computer -----col=y (2,4), row=x (5,7)
+        for r in range(5,8):
+            for c in range(2,9):
+                self.board[r][c] = self.princess_L_computer
         
-        #princess R computer ----y(4,7), x(13,15)
+        #princess R computer ----y(5,7), x(13,15)
+        for r in range(5,8):
+            for c in range(13,16):
+                self.board[r][c] = self.princess_R_computer
+
+        #princess L user ----y(24,26), x(2,4)
+        for r in range(24,27):
+            for c in range(2,5):
+                self.board[r][c] = self.princess_L_user
+
+        #princess R user ----y(24,26), x(13,15)
         for r in range(13,16):
-            for c in range(4,8):
-                self.board[r][c] = princess_R_computer
+            for c in range(24,27):
+                self.board[r][c] = self.princess_R_user
 
-        #princess L user  
-        for r in range(2,5):
-            for c in range(21,25):
-                self.board[r][c] = princess_L_user
+        #king computer ---- y(7,10), x(1,4)
+        for r in range(1,5):
+            for c in range(7,11):
+                self.board[r][c] = self.king_computer
 
-        #princess R user
-        for r in range(13,16):
-            for c in range(21,25):
-                self.board[r][c] = princess_R_user
+        #king user ---- y(7,10), x(27,30)
+        for r in range(27,31):
+            for c in range(7,11):
+                self.board[r][c] = self.king_user   
 
-        #king computer
-        for r in range(7,11):
-            for c in range(0,5):
-                self.board[r][c] = king_computer
 
-        #king user
-        for r in range(7,11):
-            for c in range(24,29):
-                self.board[r][c] = king_user   
-
-    
-    
-    def place_card(self, card, x, y):
-        if self.board[x][y] is None
-            self.board[x][y] = card
-            card.setPos(x, y)
-            pos = [x, y]
-            card.path_list.append(pos)
-        else
-            return False
-
-# Creates 18x32 game board array
-print("x")
-board = Board()
+# need to add smthing to make sure the coords aren't out of bounds
+def place_card(self, obj, x, y):
+    self.board[x][y] = obj
+    obj.setPos(x, y)
+    print(f"x: {x} y: {y}")
 
 
 '''
@@ -84,14 +69,4 @@ board = Board()
 # card automatically goes to left or right bridge depending on which is closer
 # if card is place on y coord below or equal to towers, it goes straight up past them, diagonal to path, and straight up path
 '''
-=======
 
-
-
-    # need to add smthing to make sure the coords aren't out of bounds
-    def place_card(self, obj, x, y):
-        self.board[x][y] = obj
-        obj.setPos(x, y)
-        print(f"x: {x} y: {y}")
-
->>>>>>> b26aa81 (add tower locations and place card method)
