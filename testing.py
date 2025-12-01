@@ -2,6 +2,7 @@ import get_data
 import Card
 import pprint
 import json
+import Board
 
 troops = ['Musketeer', 'Knight', 'Archers', 'Giant', 'Minions', 'Mini Pekka', 'Spear Goblins', 'Goblins', 'Goblin Cage']
 spells = ['Fireball', 'Arrows']
@@ -67,3 +68,5 @@ for x in json_data['troops']:
 
 for x in user_deck:
     print(x.sc_key)
+
+

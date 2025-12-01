@@ -28,11 +28,13 @@ class Runner:
         list_of_objects.append(obj)        
 
 
-# Creates 18x32 game board array
-board = Board()
+    # Creates 18x32 game board array
+    board = Board()
 
-test_card = Card("Knight", 3, "Troop", {"hitpoints": 600}, {"damage": 75}, ["Ground"], ["Valkyrie"], ["Giant"])
-board.place_card(test_card, 5, 10)
+    board.print_board()
+
+    #test_card = Card("Knight", 3, "Troop", {"hitpoints": 600}, {"damage": 75}, ["Ground"], ["Valkyrie"], ["Giant"])
+    #board.place_card(test_card, 5, 10)
 
 
 '''

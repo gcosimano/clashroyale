@@ -2,7 +2,7 @@ from Card import Card
 from Tower import Tower, KingTower
 
 class Board:
-    def __init__(self, length=31, width=17):
+    def __init__(self, length=32, width=18):
         # Initialize the 2D array using nested list comprehensions:
         # Outer loop controls the rows (length/X)
         # Inner loop controls the columns (width/Y)
@@ -18,11 +18,12 @@ class Board:
         self.princess_R_computer = Tower(50, 7.5, 2400, False)
         self.king_user = KingTower(50, 7, 2400, False, False)
         self.king_computer = KingTower(50, 7, 2400, False, False)
+        self.river = "RIVER"
 
         #placing Towers on their appropriate squares
         #princess L computer -----col=y (2,4), row=x (5,7)
         for r in range(5,8):
-            for c in range(2,9):
+            for c in range(2,5):
                 self.board[r][c] = self.princess_L_computer
         
         #princess R computer ----y(5,7), x(13,15)
@@ -36,8 +37,8 @@ class Board:
                 self.board[r][c] = self.princess_L_user
 
         #princess R user ----y(24,26), x(13,15)
-        for r in range(13,16):
-            for c in range(24,27):
+        for r in range(24,27):
+            for c in range(13,16):
                 self.board[r][c] = self.princess_R_user
 
         #king computer ---- y(7,10), x(1,4)
@@ -50,12 +51,64 @@ class Board:
             for c in range(7,11):
                 self.board[r][c] = self.king_user   
 
+
+        for r in range(15, 17):
+            for c in range(0,18):
+                self.board[r][c] = self.river
+
+
+    def print_board(self):
+        # Determine board dimensions
+        num_rows = len(self.board)
+        num_cols = len(self.board[0])
+        
+        # --- 1. Print Column Headers (Top) ---
+        
+        # Print a blank space (or header) to align with the row indices
+        # We use a placeholder to ensure alignment with the row index numbers (0-30)
+        # We also use str(num_rows) to dynamically create the correct spacing.
+        print(" " * (len(str(num_rows))) + " ", end="") 
+        
+        # Print the column indices (0, 1, 2, ... 16)
+        for c in range(num_cols):
+            # Print column index followed by a space
+            print(f"{c: <2}", end=" ") # Use f-string for 2-digit minimum width formatting
+        print() # Newline after the column headers
+        
+        # --- 2. Print Each Row with its Index (Side) ---
+        
+        # Use enumerate to get both the index (r) and the row content
+        for r, row in enumerate(self.board):
+            # Print the row index (r) followed by a colon for visual separation
+            print(f"{r: <{len(str(num_rows))}}:", end=" ") 
+            
+            row_elements = []
+            for item in row:
+                # Use the same logic as before for element representation
+                if isinstance(item, KingTower):
+                    row_elements.append('K')
+                elif isinstance(item, Tower):
+                    row_elements.append('T')
+                elif item is None:
+                    row_elements.append('.')
+                elif item is self.river:
+                    row_elements.append('~')
+                else:
+                    # For a Card or other object
+                    row_elements.append('O')
+            
+            # Print the row contents
+            print("  ".join(row_elements))
+
+    
+    
+
+
     # need to add smthing to make sure the coords aren't out of bounds
     def place_card(self, obj, x, y):
         self.board[x][y] = obj
         obj.setPos(x, y)
         print(f"x: {x} y: {y}")
-
 
 '''
 # 18x32
