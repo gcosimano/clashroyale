@@ -16,10 +16,11 @@
         "crown_tower_damage": {"11": 64, "12": 70, "13": 77, "14": 84, "15": 93}
       },
       "mechanics": {
-        "radius": 4,
-        "deploy_time": 1,
+        "radius": 3.5,
+        "deploy_time": 2,
         "targets": "Air & Ground",
-        "count": 1
+        "count": 1,
+        "speed": 19
       },
       "special_abilities": ["Area Damage", "Tower Damage Reduction"],
       "counters": ["Minions", "Skeleton Army", "Goblin Gang"],
@@ -42,9 +43,10 @@
       },
       "mechanics": {
         "radius": 2.5,
-        "deploy_time": 1,
+        "deploy_time": 2,
         "targets": "Air & Ground",
-        "count": 1
+        "count": 1,
+        "speed": 10
       },
       "special_abilities": ["Area Damage", "Knockback", "Tower Damage Reduction"],
       "counters": ["Wizard", "Musketeer", "Three Musketeers"],
