@@ -1,5 +1,6 @@
 from Card import Card
 from Tower import Tower, KingTower
+import time
 
 class Board:
     def __init__(self, length=32, width=18):
@@ -109,6 +110,23 @@ class Board:
         self.board[x][y] = obj
         obj.setPos(x, y)
         print(f"x: {x} y: {y}")
+
+    @staticmethod
+    def measure_elapsed_time():
+        start_time = time.monotonic()  # Use monotonic for reliable time measurement
+        elapsed_seconds = 0
+
+        while True:
+            current_time = time.monotonic()
+            new_elapsed_seconds = int(current_time - start_time)
+            if new_elapsed_seconds > elapsed_seconds:
+                elapsed_seconds = new_elapsed_seconds
+                print(f"{elapsed_seconds} seconds have elapsed.")
+
+
+
+
+
 
 '''
 # 18x32

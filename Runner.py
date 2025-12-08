@@ -33,6 +33,8 @@ class Runner:
 
     board.print_board()
 
+    Board.measure_elapsed_time()
+
 
     #test_card = Card("Knight", 3, "Troop", {"hitpoints": 600}, {"damage": 75}, ["Ground"], ["Valkyrie"], ["Giant"])
     #board.place_card(test_card, 5, 10)
