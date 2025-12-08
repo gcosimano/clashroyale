@@ -19,3 +19,17 @@ class Card:
     def setPos(self, newX, newY):
         self.x = newX
         self.y = newY
+ 
+   def to_string(self):
+       COLOR = ""
+       RESET = '\033[0m'
+       if(self.is_user == True):
+           COLOR = "\033[91m"
+       else:
+           COLOR = "\033[94m"
+       first_letter = self.sc_key[0]
+       if(self.sc_key == "goblin"):
+           first_letter = "g"
+       ans = f"{COLOR}{first_letter}{RESET}"
+       return ans
+
