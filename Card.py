@@ -20,7 +20,7 @@ class Card:
         self.x = newX
         self.y = newY
  
-   def to_string(self):
+    def to_string(self):
        COLOR = ""
        RESET = '\033[0m'
        if(self.is_user == True):

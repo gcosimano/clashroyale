@@ -3,10 +3,18 @@ from Tower import Tower, KingTower
 import time
 
 class Board:
-    def __init__(self, length=32, width=18):
+
+    
+
+    def __init__(self, length=32, width=18, elapsed=0):
         # Initialize the 2D array using nested list comprehensions:
         # Outer loop controls the rows (length/X)
         # Inner loop controls the columns (width/Y)
+
+        self.elapsed = elapsed
+        self.length = length
+        self.width = width
+
         self.board = [
             [None for _ in range(width)] 
             for _ in range(length)
@@ -111,22 +119,24 @@ class Board:
         obj.setPos(x, y)
         print(f"x: {x} y: {y}")
 
-    @staticmethod
-    def measure_elapsed_time():
-        start_time = time.monotonic()  # Use monotonic for reliable time measurement
-        elapsed_seconds = 0
+
+
+
+    def measure_elapsed_time(self):
+        start_time = time.monotonic()        
 
         while True:
             current_time = time.monotonic()
-            new_elapsed_seconds = int(current_time - start_time)
-            if new_elapsed_seconds > elapsed_seconds:
-                elapsed_seconds = new_elapsed_seconds
-                print(f"{elapsed_seconds} seconds have elapsed.")
+            new_elapsed = round((current_time - start_time),1)
+            if new_elapsed > self.elapsed:
+                self.elapsed = new_elapsed
+                print(self.elapsed, "seconds have elapsed.")
+            
+            time.sleep(.1)
+        
 
 
-
-
-
+# MAKE TIME INSTANCE VAR
 
 '''
 # 18x32

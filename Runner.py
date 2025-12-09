@@ -31,7 +31,7 @@ class Runner:
     # Creates 18x32 game board array
     board = Board()
 
-    board.print_board()
+    #board.print_board()
 
     Board.measure_elapsed_time()
 
