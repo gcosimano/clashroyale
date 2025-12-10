@@ -3,6 +3,8 @@ from Card import Card
 from Board import Board
 
 class Runner:
+
+
     file_path = 'troops.json'
     with open(file_path, 'r') as file:
             json_data = json.load(file)
@@ -29,11 +31,15 @@ class Runner:
 
 
     # Creates 18x32 game board array
+
     board = Board()
 
-    #board.print_board()
+    board.print_board()
 
-    Board.measure_elapsed_time()
+    Board.measure_elapsed_time(self=board)
+
+
+
 
 
     #test_card = Card("Knight", 3, "Troop", {"hitpoints": 600}, {"damage": 75}, ["Ground"], ["Valkyrie"], ["Giant"])

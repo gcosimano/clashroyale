@@ -27,7 +27,7 @@ class Board:
         self.princess_R_computer = Tower(50, 7.5, 2400, False)
         self.king_user = KingTower(50, 7, 2400, False, False)
         self.king_computer = KingTower(50, 7, 2400, False, False)
-        self.river = "RIVER"
+        self.river = Card()
 
         #placing Towers on their appropriate squares
         #princess L computer -----col=y (2,4), row=x (5,7)
@@ -134,7 +134,10 @@ class Board:
             
             time.sleep(.1)
         
-
+    def move_card(card):
+        #determine target
+        #if something is in target, move towards it
+        #if u can shoot at it, shoot at it
 
 # MAKE TIME INSTANCE VAR
 
