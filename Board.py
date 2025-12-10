@@ -21,13 +21,13 @@ class Board:
         ]
 
         #creating towers to go into board array, level 1 towers
-        self.princess_L_user = Tower(50, 7.5, 2400, False)
-        self.princess_R_user = Tower(50, 7.5, 2400, False)
-        self.princess_L_computer = Tower(50, 7.5, 2400, False)
-        self.princess_R_computer = Tower(50, 7.5, 2400, False)
-        self.king_user = KingTower(50, 7, 2400, False, False)
-        self.king_computer = KingTower(50, 7, 2400, False, False)
-        self.river = Card()
+        self.princess_L_user = Tower(50, 7.5, 2400, False, True)
+        self.princess_R_user = Tower(50, 7.5, 2400, False, True)
+        self.princess_L_computer = Tower(50, 7.5, 2400, False, False)
+        self.princess_R_computer = Tower(50, 7.5, 2400, False, False)
+        self.king_user = KingTower(50, 7, 2400, False, False, True)
+        self.king_computer = KingTower(50, 7, 2400, False, False, False)
+        self.river = Card(-1, 0, "River", {}, 0, [], [], False, False)
 
         #placing Towers on their appropriate squares
         #princess L computer -----col=y (2,4), row=x (5,7)
@@ -95,13 +95,20 @@ class Board:
             for item in row:
                 # Use the same logic as before for element representation
                 if isinstance(item, KingTower):
-                    row_elements.append('K')
+                    if item.is_user == True:
+                        #row_elements.append('K') - make blue for user
+                    else:
+                        #row_elements.append('k') - make red for pc
+                # add color logic for each if statement
                 elif isinstance(item, Tower):
-                    row_elements.append('T')
+                    if item.is_user == True:
+                        #row_elements.append('P')
+                    else:
+                        #row_elements.append('p') 
                 elif item is None:
                     row_elements.append('.')
-                elif item is self.river:
-                    row_elements.append('~')
+                elif item is (self.river):
+                    # row_elements.append('~') - change color
                 else:
                     # For a Card or other object
                     row_elements.append('O')
@@ -135,6 +142,11 @@ class Board:
             time.sleep(.1)
         
     def move_card(card):
+
+        while True:
+            
+            #calculate distance between card and nearest path
+
         #determine target
         #if something is in target, move towards it
         #if u can shoot at it, shoot at it
