@@ -126,7 +126,9 @@ class Board:
         obj.setPos(x, y)
         print(f"x: {x} y: {y}")
 
-
+    def move_card(self, obj):
+        # check area of sight
+        return 5
 
 
     def measure_elapsed_time(self):
@@ -142,11 +144,6 @@ class Board:
             time.sleep(.1)
         
     def move_card(card):
-
-        while True:
-            
-            #calculate distance between card and nearest path
-
         #determine target
         #if something is in target, move towards it
         #if u can shoot at it, shoot at it
