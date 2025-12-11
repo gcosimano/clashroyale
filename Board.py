@@ -27,7 +27,29 @@ class Board:
         self.princess_R_computer = Tower(50, 7.5, 2400, False, False)
         self.king_user = KingTower(50, 7, 2400, False, False, True)
         self.king_computer = KingTower(50, 7, 2400, False, False, False)
-        self.river = Card(-1, 0, "River", {}, 0, [], [], False, False)
+        self.river = Card(-1, 0, "River", {}, -1, -1, -1, [], [], False)
+        self.path = Card(-1, 0, "River", {}, -1, -1, -1, [], [], False)
+
+
+        #placing paths on board
+        for r in range (3,4):
+            for c in range(3,15):
+                self.board[r][c] = self.path
+
+        
+        for r in range (28,29):
+            for c in range(3,15):
+                self.board[r][c] = self.path
+
+
+        for r in range (3,29):
+            for c in range(3,4):
+                self.board[r][c] = self.path
+
+
+        for r in range (3,29):
+            for c in range(14,15):
+                self.board[r][c] = self.path
 
         #placing Towers on their appropriate squares
         #princess L computer -----col=y (2,4), row=x (5,7)
@@ -66,6 +88,9 @@ class Board:
                 self.board[r][c] = self.river
 
 
+
+
+
     def print_board(self):
         # Determine board dimensions
         num_rows = len(self.board)
@@ -96,18 +121,20 @@ class Board:
                 # Use the same logic as before for element representation
                 if isinstance(item, KingTower):
                     if item.is_user == True:
-                         row_elements.append("\033[34mK\033[0m") 
+                         row_elements.append('\033[34mK\033[0m') 
                     else:
-                        row_elements.append("\033[31mk\033[0m") 
+                        row_elements.append('\033[31mK\033[0m') 
                 elif isinstance(item, Tower):
                     if item.is_user == True:
-                        row_elements.append("\033[34mP\033[0m") 
+                        row_elements.append('\033[34mP\033[0m') 
                     else:
-                        row_elements.append("\033[31mp\033[0m") 
+                        row_elements.append('\033[31mP\033[0m') 
                 elif item is None:
-                    row_elements.append(".")
+                    row_elements.append('.')
                 elif item is (self.river):
-                    row_elements.append("\x1b[94m~\x1b[0m")
+                    row_elements.append('\033[90m~\033[0m')
+                elif item is (self.path):
+                    row_elements.append('\033[92m=\033[0m')
                 else:
                     # For a Card or other object
                     row_elements.append('O')

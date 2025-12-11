@@ -35,7 +35,7 @@ class Runner:
 
     board = Board()
 
-    #board.print_board()
+    board.print_board()
 
     #Board.measure_elapsed_time(self=board)
 
