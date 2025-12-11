@@ -12,21 +12,25 @@ class Runner:
     # Each object in list is a Card object
     list_of_objects = []
 
+    troops = ['Musketeer', 'Knight', 'Archers', 'Giant', 'Minions', 'Mini Pekka', 'Spear Goblins', 'Goblins', 'Goblin Cage']
+
     # For every troop card
     for x in json_data['troops']:
-        
-        # Create the Card object 
-        if 'damage' in x['combat_stats']:
-            obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
-                       x['mechanics']['attack_radius'], x['mechanics']['sight_range'], x['mechanics']['speed'], x['counters'], x['synergies'], True) # type: ignore
-        else:
-            print(f"Warning: {x['sc_key']} has no damage stats!")
-            obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics'], x['counters'], x['synergies'], True) # type: ignore
+
+        if x['sc_key'] in troops:
+
+            # Create the Card object 
+            if 'damage' in x['combat_stats']:
+                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics']['attack_radius'], x['mechanics']['sight_range'], x['mechanics']['speed'], x['counters'], x['synergies'], True) # type: ignore
+                print(obj)
+            else:
+                print(f"Warning: {x['sc_key']} has no damage stats!")
+                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics'], x['counters'], x['synergies'], True) # type: ignore
             
-        # Append to the list 
-        list_of_objects.append(obj)        
+            # Append to the list 
+            list_of_objects.append(obj)        
 
-
+    print(list_of_objects)
     # Creates 18x32 game board array
 
     board = Board()
