@@ -14,7 +14,7 @@ class Runner:
 
     # For every troop card
     for x in json_data['troops']:
-
+        
         # Create the Card object 
         if 'damage' in x['combat_stats']:
             obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], \
@@ -31,10 +31,9 @@ class Runner:
 
     board = Board()
 
-    board.print_board()
+    #board.print_board()
 
-    Board.measure_elapsed_time(self=board)
-
+    #Board.measure_elapsed_time(self=board)
 
 
 
