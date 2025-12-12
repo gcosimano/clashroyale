@@ -27,29 +27,7 @@ class Board:
         self.princess_R_computer = Tower(50, 7.5, 2400, False, False)
         self.king_user = KingTower(50, 7, 2400, False, False, True)
         self.king_computer = KingTower(50, 7, 2400, False, False, False)
-        self.river = Card(-1, 0, "River", {}, -1, -1, -1, [], [], False)
-        self.path = Card(-1, 0, "River", {}, -1, -1, -1, [], [], False)
-
-
-        #placing paths on board
-        for r in range (3,4):
-            for c in range(3,15):
-                self.board[r][c] = self.path
-
-        
-        for r in range (28,29):
-            for c in range(3,15):
-                self.board[r][c] = self.path
-
-
-        for r in range (3,29):
-            for c in range(3,4):
-                self.board[r][c] = self.path
-
-
-        for r in range (3,29):
-            for c in range(14,15):
-                self.board[r][c] = self.path
+        self.river = Card(-1, 0, "River", {}, 0, [], [], False, False, False, False)
 
         #placing Towers on their appropriate squares
         #princess L computer -----col=y (2,4), row=x (5,7)
@@ -88,9 +66,6 @@ class Board:
                 self.board[r][c] = self.river
 
 
-
-
-
     def print_board(self):
         # Determine board dimensions
         num_rows = len(self.board)
@@ -121,20 +96,34 @@ class Board:
                 # Use the same logic as before for element representation
                 if isinstance(item, KingTower):
                     if item.is_user == True:
-                         row_elements.append('\033[34mK\033[0m') 
+<<<<<<< HEAD
+                        row_elements.append('K')
                     else:
-                        row_elements.append('\033[31mK\033[0m') 
+                        row_elements.append('k') 
+                # add color logic for each if statement
                 elif isinstance(item, Tower):
                     if item.is_user == True:
-                        row_elements.append('\033[34mP\033[0m') 
+                        row_elements.append('P')
                     else:
-                        row_elements.append('\033[31mP\033[0m') 
+                        row_elements.append('p') 
+=======
+                         row_elements.append("\033[34mK\033[0m") 
+                    else:
+                        row_elements.append("\033[31mk\033[0m") 
+                elif isinstance(item, Tower):
+                    if item.is_user == True:
+                        row_elements.append("\033[34mP\033[0m") 
+                    else:
+                        row_elements.append("\033[31mp\033[0m") 
+>>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
                 elif item is None:
-                    row_elements.append('.')
+                    row_elements.append(".")
                 elif item is (self.river):
-                    row_elements.append('\033[90m~\033[0m')
-                elif item is (self.path):
-                    row_elements.append('\033[92m=\033[0m')
+<<<<<<< HEAD
+                    row_elements.append('~')
+=======
+                    row_elements.append("\x1b[94m~\x1b[0m")
+>>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
                 else:
                     # For a Card or other object
                     row_elements.append('O')
@@ -145,9 +134,10 @@ class Board:
     
     
 
-
+# 1/60 fps?
     # need to add smthing to make sure the coords aren't out of bounds
-    def place_card(self, obj, x, y):
+    def place_card(self, obj: Card, x, y):
+        obj.time_since_moved = self.elapsed
         self.board[x][y] = obj
         obj.setPos(x, y)
         print(f"x: {x} y: {y}")
@@ -174,11 +164,27 @@ class Board:
         #if something is in target, move towards it
         #if u can shoot at it, shoot at it
         #remove where it was before
-        obj1 = self.board[obj.x][obj.y]
-        obj1.setPos(obj.x, obj.y + obj.speed)
-        self.board[obj.x][obj.y] = None
+        if self.elapsed == obj.time_since_moved + 1:
+            obj1 = self.board[obj.x][obj.y]
+            obj1.setPos(obj.x, obj.y + obj.speed)
+            self.board[obj.x][obj.y] = None
+        
 
 
+    def measure_elapsed_time(self):
+        start_time = time.monotonic()        
+
+        while True:
+            current_time = time.monotonic()
+            new_elapsed = round((current_time - start_time),1)
+            if new_elapsed > self.elapsed:
+                self.elapsed = new_elapsed
+                # print(self.elapsed, "seconds have elapsed.")
+            
+            time.sleep(.1)
+        
+
+# MAKE TIME INSTANCE VAR
 
         '''
         # 18x32
@@ -190,3 +196,4 @@ class Board:
         # card automatically goes to left or right bridge depending on which is closer
         # if card is place on y coord below or equal to towers, it goes straight up past them, diagonal to path, and straight up path
         '''
+
