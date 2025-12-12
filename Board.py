@@ -96,6 +96,7 @@ class Board:
                 # Use the same logic as before for element representation
                 if isinstance(item, KingTower):
                     if item.is_user == True:
+<<<<<<< HEAD
                         row_elements.append('K')
                     else:
                         row_elements.append('k') 
@@ -105,10 +106,24 @@ class Board:
                         row_elements.append('P')
                     else:
                         row_elements.append('p') 
+=======
+                         row_elements.append("\033[34mK\033[0m") 
+                    else:
+                        row_elements.append("\033[31mk\033[0m") 
+                elif isinstance(item, Tower):
+                    if item.is_user == True:
+                        row_elements.append("\033[34mP\033[0m") 
+                    else:
+                        row_elements.append("\033[31mp\033[0m") 
+>>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
                 elif item is None:
-                    row_elements.append('.')
+                    row_elements.append(".")
                 elif item is (self.river):
+<<<<<<< HEAD
                     row_elements.append('~')
+=======
+                    row_elements.append("\x1b[94m~\x1b[0m")
+>>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
                 else:
                     # For a Card or other object
                     row_elements.append('O')
@@ -154,14 +169,14 @@ class Board:
 
 # MAKE TIME INSTANCE VAR
 
-'''
-# 18x32
-# create a 2D array to represent the board
-# place towers on board (make sure each point of the tower points to the same object)
-# place paths on board
-# place rivers/bridges on board
-# place card method for x and y
-# card automatically goes to left or right bridge depending on which is closer
-# if card is place on y coord below or equal to towers, it goes straight up past them, diagonal to path, and straight up path
-'''
+        '''
+        # 18x32
+        # create a 2D array to represent the board
+        # place towers on board (make sure each point of the tower points to the same object)
+        # place paths on board
+        # place rivers/bridges on board
+        # place card method for x and y
+        # card automatically goes to left or right bridge depending on which is closer
+        # if card is place on y coord below or equal to towers, it goes straight up past them, diagonal to path, and straight up path
+        '''
 

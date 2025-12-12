@@ -35,6 +35,7 @@ class Runner:
 
     board = Board()
 
+<<<<<<< HEAD
     Board.measure_elapsed_time(self=board)
     card1 = list_of_objects[1]
 
@@ -42,7 +43,11 @@ class Runner:
         board.place_card(card1, 2, 2)
         board.move_card(board.board[2][2])
         board.print_board()
+=======
+    #board.print_board()
+>>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
 
+    #Board.measure_elapsed_time(self=board)
 
 
 
