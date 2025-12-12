@@ -156,25 +156,30 @@ class Board:
         # check area of sight
         return 5
 
-
+    #'''
     def measure_elapsed_time(self):
-        start_time = time.monotonic()        
+        while not game_over():
+            self.start_time = time.monotonic()
+            calculate_movement(troops)  # Move all troops, backtracking for collisions 
+            calculate_action(troops)         # See if any troop is in combat range of troop or building
+            do_whatever_else()
+            end_time = time.monotonic()
+            elapsed = round((end_time - self.start_time),1)
+            if elapsed < time_increment:
+                time.sleep(time_increment - elapsed)            # Sleep for some set amount of time
+    #'''
 
-        while True:
-            current_time = time.monotonic()
-            new_elapsed = round((current_time - start_time),1)
-            if new_elapsed > self.elapsed:
-                self.elapsed = new_elapsed
-                print(self.elapsed, "seconds have elapsed.")
-            
-            time.sleep(.1)
-        
-    def move_card(card):
+
+    def move_card(self, obj: Card, current_time):
         #determine target
         #if something is in target, move towards it
         #if u can shoot at it, shoot at it
+        #remove where it was before
+        obj1 = self.board[obj.x][obj.y]
+        obj1.setPos(obj.x, obj.y + obj.speed)
+        self.board[obj.x][obj.y] = None
 
-# MAKE TIME INSTANCE VAR
+
 
         '''
         # 18x32
@@ -186,4 +191,3 @@ class Board:
         # card automatically goes to left or right bridge depending on which is closer
         # if card is place on y coord below or equal to towers, it goes straight up past them, diagonal to path, and straight up path
         '''
-
