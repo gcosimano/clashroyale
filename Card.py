@@ -1,7 +1,7 @@
 
 class Card:
     
-    def __init__(self, sc_key, elixir, type, combat_stats, attack_radius, sight_range, speed, counters, synergies, is_user):
+    def __init__(self, sc_key, elixir, type, combat_stats, attack_radius, sight_range, speed, counters, synergies, is_user, time_since_moved):
         
         self.sc_key = sc_key
         self.elixir = elixir
@@ -15,6 +15,7 @@ class Card:
         self.is_user = is_user
         self.x = None
         self.y = None 
+        self.time_since_moved = time_since_moved
         
 
 

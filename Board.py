@@ -27,7 +27,7 @@ class Board:
         self.princess_R_computer = Tower(50, 7.5, 2400, False, False)
         self.king_user = KingTower(50, 7, 2400, False, False, True)
         self.king_computer = KingTower(50, 7, 2400, False, False, False)
-        self.river = Card(-1, 0, "River", {}, 0, [], [], False, False)
+        self.river = Card(-1, 0, "River", {}, 0, [], [], False, False, False, False)
 
         #placing Towers on their appropriate squares
         #princess L computer -----col=y (2,4), row=x (5,7)
@@ -96,19 +96,19 @@ class Board:
                 # Use the same logic as before for element representation
                 if isinstance(item, KingTower):
                     if item.is_user == True:
-                        #row_elements.append('K') - make blue for user
+                        row_elements.append('K')
                     else:
-                        #row_elements.append('k') - make red for pc
+                        row_elements.append('k') 
                 # add color logic for each if statement
                 elif isinstance(item, Tower):
                     if item.is_user == True:
-                        #row_elements.append('P')
+                        row_elements.append('P')
                     else:
-                        #row_elements.append('p') 
+                        row_elements.append('p') 
                 elif item is None:
                     row_elements.append('.')
                 elif item is (self.river):
-                    # row_elements.append('~') - change color
+                    row_elements.append('~')
                 else:
                     # For a Card or other object
                     row_elements.append('O')
@@ -119,16 +119,24 @@ class Board:
     
     
 
-
+# 1/60 fps?
     # need to add smthing to make sure the coords aren't out of bounds
-    def place_card(self, obj, x, y):
+    def place_card(self, obj: Card, x, y):
+        obj.time_since_moved = self.elapsed
         self.board[x][y] = obj
         obj.setPos(x, y)
         print(f"x: {x} y: {y}")
 
-    def move_card(self, obj):
-        # check area of sight
-        return 5
+    def move_card(self, obj: Card):
+        # check area of sight/determine target - DO LATER
+        #if something is in target, move towards it - DO LATER
+        #if u can shoot at it, shoot at it - DOLATER
+        #remove where it was before
+        if self.elapsed == obj.time_since_moved + 1:
+            obj1 = self.board[obj.x][obj.y]
+            obj1.setPos(obj.x, obj.y + obj.speed)
+            self.board[obj.x][obj.y] = None
+        
 
 
     def measure_elapsed_time(self):
@@ -139,14 +147,10 @@ class Board:
             new_elapsed = round((current_time - start_time),1)
             if new_elapsed > self.elapsed:
                 self.elapsed = new_elapsed
-                print(self.elapsed, "seconds have elapsed.")
+                # print(self.elapsed, "seconds have elapsed.")
             
             time.sleep(.1)
         
-    def move_card(card):
-        #determine target
-        #if something is in target, move towards it
-        #if u can shoot at it, shoot at it
 
 # MAKE TIME INSTANCE VAR
 
