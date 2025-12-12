@@ -22,7 +22,7 @@ class Runner:
             # Create the Card object 
             if 'damage' in x['combat_stats']:
                 obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics']['attack_radius'], x['mechanics']['sight_range'], x['mechanics']['speed'], x['counters'], x['synergies'], True) # type: ignore
-                print(obj)
+                #print(obj)
             else:
                 print(f"Warning: {x['sc_key']} has no damage stats!")
                 obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics'], x['counters'], x['synergies'], True) # type: ignore
@@ -30,14 +30,15 @@ class Runner:
             # Append to the list 
             list_of_objects.append(obj)        
 
-    print(list_of_objects)
+    #fix that
+    #print(list_of_objects)
     # Creates 18x32 game board array
 
     board = Board()
 
-    board.print_board()
+    #board.print_board()
 
-    #Board.measure_elapsed_time(self=board)
+    Board.measure_elapsed_time(self=board, obj1=list_of_objects[0], obj2=list_of_objects[1])
 
 
 

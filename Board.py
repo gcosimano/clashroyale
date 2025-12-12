@@ -4,7 +4,7 @@ import time
 
 class Board:
 
-    
+
 
     def __init__(self, length=32, width=18, elapsed=0):
         # Initialize the 2D array using nested list comprehensions:
@@ -152,22 +152,21 @@ class Board:
         obj.setPos(x, y)
         print(f"x: {x} y: {y}")
 
-    def move_card(self, obj):
-        # check area of sight
-        return 5
 
-    #'''
-    def measure_elapsed_time(self):
-        while not game_over():
+
+    def measure_elapsed_time(self, obj1: Card, obj2: Card):
+        game_over = False
+        time_increment = 1.0/60.0  # 60 FPS
+        for i in range(4):
             self.start_time = time.monotonic()
-            calculate_movement(troops)  # Move all troops, backtracking for collisions 
-            calculate_action(troops)         # See if any troop is in combat range of troop or building
-            do_whatever_else()
+            #self.moveCard(obj1, self.start_time)
+            #self.moveCard(obj2, self.start_time)
             end_time = time.monotonic()
             elapsed = round((end_time - self.start_time),1)
             if elapsed < time_increment:
-                time.sleep(time_increment - elapsed)            # Sleep for some set amount of time
-    #'''
+                time.sleep(time_increment - elapsed)  
+                   # Sleep for some set amount of time
+
 
 
     def move_card(self, obj: Card, current_time):
