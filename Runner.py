@@ -1,6 +1,7 @@
 import json
 from Card import Card
 from Board import Board
+from OneCardRunner import OneCardRunner
 
 class Runner:
 
@@ -36,25 +37,18 @@ class Runner:
 
     board = Board()
 
-<<<<<<< HEAD
-    #board.print_board()
-=======
-<<<<<<< HEAD
-    Board.measure_elapsed_time(self=board)
+    board.print_board()
+
+    #Board.measure_elapsed_time(self=board)
     card1 = list_of_objects[1]
 
+    '''
     while(board.elapsed < 20):
         board.place_card(card1, 2, 2)
         board.move_card(board.board[2][2])
         board.print_board()
-=======
-    #board.print_board()
->>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
->>>>>>> refs/remotes/origin/main
 
-    Board.measure_elapsed_time(self=board, obj1=list_of_objects[0], obj2=list_of_objects[1])
-
-
+    '''
 
 
     #test_card = Card("Knight", 3, "Troop", {"hitpoints": 600}, {"damage": 75}, ["Ground"], ["Valkyrie"], ["Giant"])

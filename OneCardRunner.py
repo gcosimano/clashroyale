@@ -48,8 +48,8 @@ class OneCardRunner:
         if new_elapsed > elapsed:
             elapsed = new_elapsed
             board.move_card(card1, elapsed)
-            #board.print_board()
+            board.print_board()
 
-            # print(self.elapsed, "seconds have elapsed.")
+            print(elapsed, "seconds have elapsed.")
         time.sleep(.1)
         
