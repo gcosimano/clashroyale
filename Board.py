@@ -4,7 +4,7 @@ import time
 
 class Board:
 
-
+    
 
     def __init__(self, length=32, width=18, elapsed=0):
         # Initialize the 2D array using nested list comprehensions:
@@ -96,7 +96,6 @@ class Board:
                 # Use the same logic as before for element representation
                 if isinstance(item, KingTower):
                     if item.is_user == True:
-<<<<<<< HEAD
                         row_elements.append('K')
                     else:
                         row_elements.append('k') 
@@ -106,24 +105,10 @@ class Board:
                         row_elements.append('P')
                     else:
                         row_elements.append('p') 
-=======
-                         row_elements.append("\033[34mK\033[0m") 
-                    else:
-                        row_elements.append("\033[31mk\033[0m") 
-                elif isinstance(item, Tower):
-                    if item.is_user == True:
-                        row_elements.append("\033[34mP\033[0m") 
-                    else:
-                        row_elements.append("\033[31mp\033[0m") 
->>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
                 elif item is None:
-                    row_elements.append(".")
+                    row_elements.append('.')
                 elif item is (self.river):
-<<<<<<< HEAD
                     row_elements.append('~')
-=======
-                    row_elements.append("\x1b[94m~\x1b[0m")
->>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
                 else:
                     # For a Card or other object
                     row_elements.append('O')
@@ -142,34 +127,23 @@ class Board:
         obj.setPos(x, y)
         print(f"x: {x} y: {y}")
 
-
-
-    def measure_elapsed_time(self, obj1: Card, obj2: Card):
-        game_over = False
-        time_increment = 1.0/60.0  # 60 FPS
-        for i in range(4):
-            self.start_time = time.monotonic()
-            #self.moveCard(obj1, self.start_time)
-            #self.moveCard(obj2, self.start_time)
-            end_time = time.monotonic()
-            elapsed = round((end_time - self.start_time),1)
-            if elapsed < time_increment:
-                time.sleep(time_increment - elapsed)  
-                   # Sleep for some set amount of time
-
-
-
     def move_card(self, obj: Card, current_time):
-        #determine target
-        #if something is in target, move towards it
-        #if u can shoot at it, shoot at it
-        #remove where it was before
-        if self.elapsed == obj.time_since_moved + 1:
-            obj1 = self.board[obj.x][obj.y]
-            obj1.setPos(obj.x, obj.y + obj.speed)
+        # check area of sight/determine target - DO LATER
+        #if something is in target, move towards it - DO LATER
+        #if u can shoot at it, shoot at it - DOLATER
+        if current_time == obj.time_since_moved + 1:
+            obj1: Card = obj
+            blocks_to_move = int(obj.speed) * (-1)
+            if obj.is_user == False:
+                blocks_to_move = blocks_to_move * (-1)
+
+            #setting new position, removing where it was b4
+            obj1.setPos(obj.x, obj.y + blocks_to_move)
+            self.board[obj1.x][obj1.y] = obj1
             self.board[obj.x][obj.y] = None
         
 
+'''
 
     def measure_elapsed_time(self):
         start_time = time.monotonic()        
@@ -180,20 +154,20 @@ class Board:
             if new_elapsed > self.elapsed:
                 self.elapsed = new_elapsed
                 # print(self.elapsed, "seconds have elapsed.")
-            
             time.sleep(.1)
+'''
         
 
 # MAKE TIME INSTANCE VAR
 
-        '''
-        # 18x32
-        # create a 2D array to represent the board
-        # place towers on board (make sure each point of the tower points to the same object)
-        # place paths on board
-        # place rivers/bridges on board
-        # place card method for x and y
-        # card automatically goes to left or right bridge depending on which is closer
-        # if card is place on y coord below or equal to towers, it goes straight up past them, diagonal to path, and straight up path
-        '''
+'''
+# 18x32
+# create a 2D array to represent the board
+# place towers on board (make sure each point of the tower points to the same object)
+# place paths on board
+# place rivers/bridges on board
+# place card method for x and y
+# card automatically goes to left or right bridge depending on which is closer
+# if card is place on y coord below or equal to towers, it goes straight up past them, diagonal to path, and straight up path
+'''
 
