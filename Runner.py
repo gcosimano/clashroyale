@@ -21,13 +21,8 @@ class Runner:
 
             # Create the Card object 
             if 'damage' in x['combat_stats']:
-<<<<<<< HEAD
-                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics']['attack_radius'], x['mechanics']['sight_range'], x['mechanics']['speed'], x['counters'], x['synergies'], True) # type: ignore
-                #print(obj)
-=======
                 obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics']['attack_radius'], x['mechanics']['sight_range'], x['mechanics']['speed'], x['counters'], x['synergies'], True, 0) # type: ignore
                 print(obj)
->>>>>>> refs/remotes/origin/main
             else:
                 print(f"Warning: {x['sc_key']} has no damage stats!")
                 obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics'], x['counters'], x['synergies'], True, 0) # type: ignore

@@ -96,17 +96,6 @@ class Board:
                 # Use the same logic as before for element representation
                 if isinstance(item, KingTower):
                     if item.is_user == True:
-<<<<<<< HEAD
-                        row_elements.append('K')
-                    else:
-                        row_elements.append('k') 
-                # add color logic for each if statement
-                elif isinstance(item, Tower):
-                    if item.is_user == True:
-                        row_elements.append('P')
-                    else:
-                        row_elements.append('p') 
-=======
                          row_elements.append("\033[34mK\033[0m") 
                     else:
                         row_elements.append("\033[31mk\033[0m") 
@@ -115,15 +104,10 @@ class Board:
                         row_elements.append("\033[34mP\033[0m") 
                     else:
                         row_elements.append("\033[31mp\033[0m") 
->>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
                 elif item is None:
                     row_elements.append(".")
                 elif item is (self.river):
-<<<<<<< HEAD
-                    row_elements.append('~')
-=======
                     row_elements.append("\x1b[94m~\x1b[0m")
->>>>>>> fd25bb4ba2a309edf00dba1be659203f60be398a
                 else:
                     # For a Card or other object
                     row_elements.append('O')
