@@ -50,15 +50,10 @@ class OneCardRunner:
         if elapsed == card1.time_since_moved + 1:
              
             board.move_card(card1, elapsed)
-<<<<<<< HEAD
             #board.print_board()
             print(card1.time_since_moved)
+            print(card1.x, card1.y)
 
             # print(elapsed, "seconds have elapsed.")
-=======
-            board.print_board()
-
-            print(elapsed, "seconds have elapsed.")
->>>>>>> f88c5a4bf17946f3d4d7fc4057218c0452dd4ef4
         time.sleep(.1)
         

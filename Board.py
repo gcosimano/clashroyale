@@ -134,7 +134,7 @@ class Board:
                     row_elements.append('\033[92m=\033[0m')
                 else:
                     # For a Card or other object
-                    row_elements.append('O')
+                    row_elements.append(item)
             
             # Print the row contents
             print("  ".join(row_elements))
@@ -154,16 +154,20 @@ class Board:
         # check area of sight/determine target - DO LATER
         #if something is in target, move towards it - DO LATER
         #if u can shoot at it, shoot at it - DOLATER
+        print("you called it")
         if current_time == obj.time_since_moved + 1:
             obj1: Card = obj
             blocks_to_move = int(obj.speed) * (-1)
             if obj.is_user == False:
                 blocks_to_move = blocks_to_move * (-1)
 
-            #setting new position, removing where it was b4
+            #setting new position, removing where it was b4, setting timesincemoved
             obj1.setPos(obj.x, obj.y + blocks_to_move)
             self.board[obj1.x][obj1.y] = obj1
             self.board[obj.x][obj.y] = None
+            obj.set_time_since_moved(current_time)
+
+    
         
 
 '''

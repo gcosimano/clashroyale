@@ -1,7 +1,6 @@
 import json
 from Card import Card
 from Board import Board
-from OneCardRunner import OneCardRunner
 
 class Runner:
 
@@ -31,24 +30,24 @@ class Runner:
             # Append to the list 
             list_of_objects.append(obj)        
 
-    #fix that
-    #print(list_of_objects)
+    print(list_of_objects)
     # Creates 18x32 game board array
 
     board = Board()
 
-    board.print_board()
-
-    #Board.measure_elapsed_time(self=board)
+    Board.measure_elapsed_time(self=board)
     card1 = list_of_objects[1]
 
-    '''
+'''
+
     while(board.elapsed < 20):
         board.place_card(card1, 2, 2)
         board.move_card(board.board[2][2])
         board.print_board()
+'''
+    #Board.measure_elapsed_time(self=board)
 
-    '''
+
 
 
     #test_card = Card("Knight", 3, "Troop", {"hitpoints": 600}, {"damage": 75}, ["Ground"], ["Valkyrie"], ["Giant"])
