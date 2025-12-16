@@ -34,9 +34,10 @@ class Runner:
     # Creates 18x32 game board array
 
     board = Board()
+    board.print_board()
 
-    Board.measure_elapsed_time(self=board)
-    card1 = list_of_objects[1]
+    #Board.measure_elapsed_time(self=board)
+    #card1 = list_of_objects[1]
 
 '''
 
@@ -45,7 +46,7 @@ class Runner:
         board.move_card(board.board[2][2])
         board.print_board()
 '''
-    #Board.measure_elapsed_time(self=board)
+
 
 
 

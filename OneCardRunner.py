@@ -62,4 +62,12 @@ class OneCardRunner:
 
         # print(elapsed, "seconds have elapsed.")
         time.sleep(.1)
+
+    def clear_console():
+        # Clear command for Windows
+        if os.name == 'nt':
+            os.system('cls')
+        # Clear command for Unix/Linux/Mac
+        else:
+            os.system('clear')
         
