@@ -27,8 +27,8 @@ class Board:
         self.princess_R_computer = Tower(50, 7.5, 2400, False, False)
         self.king_user = KingTower(50, 7, 2400, False, False, True)
         self.king_computer = KingTower(50, 7, 2400, False, False, False)
-        self.river = Card(-1, 0, "River", {}, -1, -1, -1, [], [], False, -1)
-        self.path = Card(-1, 0, "Path", {}, -1, -1, -1, [], [], False, -1)
+        self.river = Card(-1, 0, "River", {}, -1, -1, -1, -1, -1, [], False, -1)
+        self.path = Card(-1, 0, "Path", {}, -1, -1, -1, -1, -1, [], False, -1)
 
         #placing paths on board
         for r in range (3,4):

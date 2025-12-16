@@ -21,11 +21,11 @@ class OneCardRunner:
 
             # Create the Card object 
             if 'damage' in x['combat_stats']:
-                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics']['attack_radius'], x['mechanics']['sight_range'], x['mechanics']['speed'], x['counters'], x['synergies'], True, 0) # type: ignore
+                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats']['hitpoints']['11'], x['combat_stats']['damage']['11'], x['mechanics']['attack_radius'], x['mechanics']['sight_range'], x['mechanics']['speed'], x['counters'], x['synergies'], True, 0) # type: ignore
                 # print(obj)
             else:
                 print(f"Warning: {x['sc_key']} has no damage stats!")
-                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats'], x['mechanics'], x['counters'], x['synergies'], True, 0) # type: ignore
+                obj = Card(x['sc_key'], x['elixir'], x['type'], x['combat_stats']['hitpoints']['11'], 0, x['mechanics']['attack_radius'], x['mechanics']['sight_range'], x['mechanics']['speed'], x['counters'], x['synergies'], True, 0) # type: ignore
             
             # Append to the list 
             list_of_objects.append(obj)        
