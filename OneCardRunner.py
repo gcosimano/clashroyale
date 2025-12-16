@@ -52,7 +52,6 @@ class OneCardRunner:
             board.move_card(card1, elapsed)
             #board.print_board()
             print(card1.time_since_moved)
-            print(card1.x, card1.y)
 
             # print(elapsed, "seconds have elapsed.")
         time.sleep(.1)
