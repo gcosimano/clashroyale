@@ -17,7 +17,7 @@ class Board:
             for _ in range(length)
         ]
 
-        #creating towers to go into board array, level 1 towers
+        #creating towers to go into board array
         self.princess_L_user = Tower(50, 7.5, 2400, False, True)
         self.princess_R_user = Tower(50, 7.5, 2400, False, True)
         self.princess_L_computer = Tower(50, 7.5, 2400, False, False)
@@ -90,34 +90,36 @@ class Board:
         num_rows = len(self.board)
         num_cols = len(self.board[0])
         
-        # --- 1. Print Column Headers (Top) ---
         
         # Print a blank space (or header) to align with the row indices
-        # We use a placeholder to ensure alignment with the row index numbers (0-30)
-        # We also use str(num_rows) to dynamically create the correct spacing.
+        # Use a placeholder to ensure alignment with the row index numbers
+        # Use str(num_rows) to dynamically create the correct spacing
         print(" " * (len(str(num_rows))) + " ", end="") 
         
-        # Print the column indices (0, 1, 2, ... 16)
+        # Print the column indices
         for c in range(num_cols):
             # Print column index followed by a space
-            print(f"{c: <2}", end=" ") # Use f-string for 2-digit minimum width formatting
-        print() # Newline after the column headers
+            print(f"{c: <2}", end=" ")
+        print()
         
-        # --- 2. Print Each Row with its Index (Side) ---
-        
+
         # Use enumerate to get both the index (r) and the row content
         for r, row in enumerate(self.board):
-            # Print the row index (r) followed by a colon for visual separation
+            # Print the row index (r) followed by a colon
             print(f"{r: <{len(str(num_rows))}}:", end=" ") 
             
+        
+
             row_elements = []
+            
+            
+            # print items onto board
             for item in row:
-                # Use the same logic as before for element representation
-                if isinstance(item, KingTower):
-                    if item.is_user == True:
-                         row_elements.append('\033[34mK\033[0m') 
+                if isinstance(item, KingTower): # king towers
+                    if item.is_user == True: # print capitalized if user, else lowercase
+                         row_elements.append('\033[34mK\033[0m') #print in blue for user
                     else:
-                        row_elements.append('\033[31mk\033[0m') 
+                        row_elements.append('\033[31mk\033[0m') # print in red for computer
                 elif isinstance(item, Tower):
                     if item.is_user == True:
                         row_elements.append('\033[34mP\033[0m') 
@@ -126,15 +128,21 @@ class Board:
                 elif item is None:
                     row_elements.append('.')
                 elif item is (self.river):
-                    row_elements.append('\033[90m~\033[0m')
+                    row_elements.append('\033[90m~\033[0m') # print river in gray
                 elif item is (self.path):
-                    row_elements.append('\033[92m=\033[0m')
+                    row_elements.append('\033[92m=\033[0m') # print path in green
                 else:
-                    # For a Card or other object
+                    # For a Card, use to_string method which prints its first letter
                     row_elements.append(item.to_string())
             
             # Print the row contents
             print("  ".join(row_elements))
+
+
+            # NEED TO MAKE BOARD UPDATE TO SHOW MOVEMENT
+            #for r in range(self.length):
+                #for c in range(self.width):
+                    
 
     
     
