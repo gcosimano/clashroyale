@@ -36,7 +36,10 @@ class OneCardRunner:
     board = Board()
 
     card1: Card = list_of_objects[0]
+    card2: Card = list_of_objects[3]
+    card2.set_is_user(False)
     board.place_card(card1, 30, 1)
+    board.place_card(card2, 14, 10)
 
 
     start_time = time.monotonic() 
@@ -47,18 +50,17 @@ class OneCardRunner:
         new_elapsed = round((current_time - start_time),1)
         if new_elapsed > elapsed:
             elapsed = new_elapsed
-        if elapsed == card1.time_since_moved + 1:
+        
              
-            board.move_card(card1, elapsed)
+        board.move_card(card1, elapsed)
+        board.move_card(card2, elapsed)
+        #board.print_board()
+        print(card1.time_since_moved, "Card1")
+        
+        print(card1.x, card1.y, "Card 1")
+        print(card2.x, card2.y, "Card 2")
 
-            board.print_board()
-                
-            print(card1.time_since_moved)
-            
-
-            # print(elapsed, "seconds have elapsed.")
-
-
+        # print(elapsed, "seconds have elapsed.")
         time.sleep(.1)
 
     def clear_console():

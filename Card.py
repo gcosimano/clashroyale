@@ -39,3 +39,5 @@ class Card:
     def set_time_since_moved(self, x):
         self.time_since_moved = x
 
+    def set_is_user(self, x):
+        self.is_user = x
