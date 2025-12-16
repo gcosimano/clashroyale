@@ -3,9 +3,6 @@ from Tower import Tower, KingTower
 import time
 
 class Board:
-
-    
-
     def __init__(self, length=32, width=18, elapsed=0):
         # Initialize the 2D array using nested list comprehensions:
         # Outer loop controls the rows (length/X)
@@ -120,12 +117,12 @@ class Board:
                     if item.is_user == True:
                          row_elements.append('\033[34mK\033[0m') 
                     else:
-                        row_elements.append('\033[31mK\033[0m') 
+                        row_elements.append('\033[31mk\033[0m') 
                 elif isinstance(item, Tower):
                     if item.is_user == True:
                         row_elements.append('\033[34mP\033[0m') 
                     else:
-                        row_elements.append('\033[31mP\033[0m') 
+                        row_elements.append('\033[31mp\033[0m') 
                 elif item is None:
                     row_elements.append('.')
                 elif item is (self.river):
@@ -134,7 +131,7 @@ class Board:
                     row_elements.append('\033[92m=\033[0m')
                 else:
                     # For a Card or other object
-                    row_elements.append(item)
+                    row_elements.append(item.to_string())
             
             # Print the row contents
             print("  ".join(row_elements))

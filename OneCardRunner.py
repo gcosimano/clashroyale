@@ -50,9 +50,22 @@ class OneCardRunner:
         if elapsed == card1.time_since_moved + 1:
              
             board.move_card(card1, elapsed)
-            #board.print_board()
+
+            board.print_board()
+                
             print(card1.time_since_moved)
+            
 
             # print(elapsed, "seconds have elapsed.")
+
+
         time.sleep(.1)
+
+    def clear_console():
+        # Clear command for Windows
+        if os.name == 'nt':
+            os.system('cls')
+        # Clear command for Unix/Linux/Mac
+        else:
+            os.system('clear')
         
