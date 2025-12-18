@@ -1,0 +1,82 @@
+'''
+Oct. 7 Documentation
+
+Card class
+  instance vars - sc_key, elixir, type, combat, damage, mechanics, counters, synergies, x location, y location, is_player
+  use dictionary from json
+  pair down to requried cards. (add goblin cage)
+  --also has path_list instance var, that stores every past location (x, y) of the obj
+
+Board class
+  methods -
+    place_card(self, board, card, x, y) -- void
+      places specified card on specified coordinates
+      sets cards x and y vars to its location
+      if there is alr a card there / a castle, then can't place character there. -- returns smth??
+    
+    (**add more details**)move(self, board) -- void -- moves all cards 
+      if card is_player, moves card to (row - 1) (moving "up")
+      if card is computer's, moves card to (row + 1) (moving "down")
+    
+      **moves them by their specified speed
+      if someone's in front of it, doesn't move
+      ---ADD MORE
+
+Deck
+  size 8 list called deck
+  filled with your 8 cards (Card objects, info from json)
+
+  methods
+    print_deck(self, deck)
+      prints first 4 Cards (the 4 in your hand)
+    play_card(self, index)
+      removes the card at that index and adds it to end of list
+
+Runner
+  1) Create user_deck Object and computer_deck Object
+  2) initialize board object, board
+  3) while true -
+    A) u_deck.print_deck, asks user to play card
+    B) asks input for which card to play (inputs index)
+    C) u_deck.play_card
+    D) asks input for what coordinates
+    E) board.place_card(board, u_deck[7], x, y)
+  
+    F) computer plays card (plays same card on equivalent coordinate -- temporary code)
+  
+    G) board.move (all cards move)
+  
+    H) the game stops when all character cards can't move forward (reach end of board, reach tower, reach other card, etc)
+
+Note
+(**will change**)-- all of our cards are character/troop cards (no spells yet)
+-- cards only move forward (not making them move diagonal to path yet)
+-- cards move after both players place a card
+
+--------------------
+Dec 18 Documentation
+Report for Quarter 2 Project
+
+How we are representing movement / OneCardRunner class:
+--Runner class (called OneCardRunner) has a timer that counts every thousandth of a second. Every thousandth of a second, the move method is called for each card (2 cards) on the board. The delay of card movement is negligible.
+--The move method will compare the time it was called to the time that the card last moved. If one second has passed, the location of the Card is updated (made it move by its appropriate speed). It moves the user’s cards and computer’s cards to the enemy’s castles.
+    Limitations/Future Improvements:
+      --This method only moves the Card forward. It does not determine where the Card should move (as in, it doesn’t check the blocks around the Card’s radius of vision). 
+      --There may be bugs if a card runs into the castles or other cards. 
+      --We will add code to the move method that checks surroundings (for targets, obstacles, castles) before moving the Card
+      --How will you ensure that all Cards move forward? Ex. when two of the user's cards are right in front of the other, how will we ensure that the back one will move after the first one?
+      --Also, the method doesn’t update damages or health of the Cards, as they cannot target or attack each other yet.
+          When we add methods to update damage, damage will be immediately updated to the Cards (Cards shoot projectiles in the game, but we will assume that damage occurs immediately).
+--Must debug to ensure moves appropriately when the speed of the card is a decimal (ex. 0.9, 1.2) and compare to the speeds in the app.
+--When running the method, in prints the coordinates of both cards on the screen, as well as the board using the Board's print method.
+    --We are currently working on a clear_console method so the board will be deleted and reprinted to make it easier to interpret (don't have to constantly scroll).
+
+Card class:
+updated Card instance vars to include sight_range, attack_radius, and time_since_moved (the two former variables were added into the json file with values determined experimentally by our class). 
+updated to_string method to print the first letter of the Card in a color (red and blue to distinguish between computer and user's cards). The board class print method would implicitly call on the card's to string method when printing the board. This helps us represent the board during testing.
+
+
+
+
+'''
+
