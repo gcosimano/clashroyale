@@ -1,5 +1,15 @@
+'''
+Create a new class in clashroyale called AudioRecognition
+the AudioRecognition class will use the audio files from 
+the new_audio tab. There is a method in this class called 
+audio which accepts an mp3 and decides which Card created 
+the audio. It is trained with an ai based off of the files 
+in the new_audio. Generate the code for me to copy and paste 
+into my Github.
+'''
 import os
 import librosa
+import resampy
 import numpy as np 
 from sklearn.ensemble import RandomForestClassifier
 
@@ -60,16 +70,18 @@ class AudioRecognition:
 
     def audio(self, mp3_file):
         """
-        Accepts an mp3 file and returns the name of the Card that created it.
+        Identifies the Card. Fixed to return a clean string instead of a list.
         """
-        if not self.classes_:
-            return "Model not trained. Please check the new_audio directory."
+        if len(self.classes_) == 0:
+            return "Audio file could not be processed."
             
         feature = self._extract_features(mp3_file)
         if feature is not None:
-            # External Knowledge: Predict the class with the highest probability
             prediction = self.model.predict([feature])
-            return prediction
+            # FIX: Access the first element  to get 'card_common_knight' 
+            # instead of "['card_common_knight']"
+            return str(prediction)
+        
         return "Audio file could not be processed."
 
 # Example of how this integrates with the existing Python environment [2]:
