@@ -69,19 +69,14 @@ class AudioRecognition:
             print(f"AI Training Complete. Identified cards: {list(self.classes_)}")
 
     def audio(self, mp3_file):
-        """
-        Identifies the Card. Fixed to return a clean string instead of a list.
-        """
         if len(self.classes_) == 0:
             return "Audio file could not be processed."
-            
         feature = self._extract_features(mp3_file)
         if feature is not None:
             prediction = self.model.predict([feature])
-            # FIX: Access the first element  to get 'card_common_knight' 
-            # instead of "['card_common_knight']"
-            return str(prediction)
-        
+            # Use  to return the string 'card_common_knight' 
+            # instead of the list ['card_common_knight']
+            return str(prediction) 
         return "Audio file could not be processed."
 
 # Example of how this integrates with the existing Python environment [2]:
