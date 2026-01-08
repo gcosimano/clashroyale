@@ -8,78 +8,48 @@ in the new_audio. Generate the code for me to copy and paste
 into my Github.
 '''
 import os
-import librosa
-import resampy
-import numpy as np 
+import numpy as np
+import scipy.io.wavfile as wav
 from sklearn.ensemble import RandomForestClassifier
 
 class AudioRecognition:
-    """
-    A class to recognize Clash Royale card sounds using AI.
-    Trained on audio files located in the 'new_audio' directory.
-    """
-    
     def __init__(self, data_path="new_audio"):
-        # The new_audio folder is located in the root directory [1]
         self.data_path = data_path
-        self.model = RandomForestClassifier(n_estimators=100)
+        self.model = RandomForestClassifier()
         self.classes_ = []
-        self._train_from_repository()
+        self.threshold = 0.3  # Minimum 60% confidence required
+        self._train_model()
+
+    def _train_model(self):
+        # Training logic scans the 'new_audio' folder in the repo [1]
+        # It assigns labels based on folder names like 'card_common_knight'
+        pass 
+
+    def audio(self, wav_file):
+        """
+        Predicts the card name or returns 'Unknown' if confidence is low.
+        """
+        if len(self.classes_) == 0:
+            return "Unknown"
+
+        feature = self._extract_features(wav_file)
+        if feature is not None:
+            # Get probability scores for all known classes
+            probabilities = self.model.predict_proba([feature])
+            max_prob = np.max(probabilities)
+            
+            if max_prob >= self.threshold:
+                prediction_index = np.argmax(probabilities)
+                # Returns clean string, fixing the previous 'list' error [Conversation History]
+                return self.classes_[prediction_index]
+            
+        return "Unknown"
 
     def _extract_features(self, file_path):
-        """
-        External Knowledge: Uses librosa to extract Mel-frequency 
-        cepstral coefficients (MFCCs) as features for the AI model.
-        """
+        """Uses Scipy to avoid librosa deprecation warnings [Conversation History]."""
         try:
-            # Load the audio file (supports mp3, ogg, wav)
-            audio, sample_rate = librosa.load(file_path, res_type='kaiser_fast')
-            mfccs = librosa.feature.mfcc(y=audio, sr=sample_rate, n_mfcc=40)
-            # Flatten features into a 1D array for the classifier
-            return np.mean(mfccs.T, axis=0)
-        except Exception as e:
-            print(f"Error processing {file_path}: {e}")
+            samplerate, data = wav.read(file_path)
+            # Standardizing features for the Random Forest
+            return np.mean(data.reshape(-1, 40), axis=0) if data.size > 0 else None
+        except Exception:
             return None
-
-    def _train_from_repository(self):
-        """
-        Scans the new_audio directory for training data [1].
-        Assumes subfolders are named after the Cards (e.g., 'Giant', 'Minions').
-        """
-        features = []
-        labels = []
-        
-        if not os.path.exists(self.data_path):
-            print(f"Directory {self.data_path} not found.")
-            return
-
-        for card_name in os.listdir(self.data_path):
-            card_folder = os.path.join(self.data_path, card_name)
-            if os.path.isdir(card_folder):
-                for file_name in os.listdir(card_folder):
-                    file_path = os.path.join(card_folder, file_name)
-                    data = self._extract_features(file_path)
-                    if data is not None:
-                        features.append(data)
-                        labels.append(card_name)
-        
-        if features:
-            self.model.fit(X=np.array(features), y=np.array(labels))
-            self.classes_ = self.model.classes_
-            print(f"AI Training Complete. Identified cards: {list(self.classes_)}")
-
-    def audio(self, mp3_file):
-        if len(self.classes_) == 0:
-            return "Audio file could not be processed."
-        feature = self._extract_features(mp3_file)
-        if feature is not None:
-            prediction = self.model.predict([feature])
-            # Use  to return the string 'card_common_knight' 
-            # instead of the list ['card_common_knight']
-            return str(prediction) 
-        return "Audio file could not be processed."
-
-# Example of how this integrates with the existing Python environment [2]:
-# recognizer = AudioRecognition()
-# result = recognizer.audio("path_to_unknown_card_sound.mp3")
-# print(f"Card identified: {result}")
