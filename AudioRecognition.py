@@ -9,47 +9,65 @@ into my Github.
 '''
 import os
 import numpy as np
-import scipy.io.wavfile as wav
-from sklearn.ensemble import RandomForestClassifier
+from scipy.io import wavfile
 
 class AudioRecognition:
     def __init__(self, data_path="new_audio"):
+        """
+        Loads reference sounds from the subfolders in new_audio.
+        Each subfolder name (e.g., 'card_common_knight') acts as the label.
+        """
+        self.reference_data = {}
         self.data_path = data_path
-        self.model = RandomForestClassifier()
-        self.classes_ = []
-        self.threshold = 0.3  # Minimum 60% confidence required
-        self._train_model()
+        self._load_references()
 
-    def _train_model(self):
-        # Training logic scans the 'new_audio' folder in the repo [1]
-        # It assigns labels based on folder names like 'card_common_knight'
-        pass 
+    def _load_references(self):
+        """Scans the new_audio directory to build a library of known sounds."""
+        if not os.path.exists(self.data_path):
+            return
 
-    def audio(self, wav_file):
+        for folder in os.listdir(self.data_path):
+            folder_path = os.path.join(self.data_path, folder)
+            if os.path.isdir(folder_path):
+                # Find the first .wav file to use as a reference fingerprint
+                for file in os.listdir(folder_path):
+                    if file.endswith(".wav"):
+                        file_path = os.path.join(folder_path, file)
+                        sample_rate, data = wavfile.read(file_path)
+                        # Store the normalized audio data for comparison
+                        self.reference_data[folder] = self._get_fingerprint(data)
+                        break
+
+    def _get_fingerprint(self, data):
+        """Reduces audio data to a comparable format (mean and standard deviation)."""
+        # Ensure we are working with a consistent shape (mono)
+        if len(data.shape) > 1:
+            data = data[:, 0]
+        return np.mean(np.abs(data))
+
+    def audio(self, test_file_path):
         """
-        Predicts the card name or returns 'Unknown' if confidence is low.
+        Compares the test file against the reference library.
+        Returns the exact folder name if a match is found, otherwise 'Unknown'.
         """
-        if len(self.classes_) == 0:
-            return "Unknown"
-
-        feature = self._extract_features(wav_file)
-        if feature is not None:
-            # Get probability scores for all known classes
-            probabilities = self.model.predict_proba([feature])
-            max_prob = np.max(probabilities)
-            
-            if max_prob >= self.threshold:
-                prediction_index = np.argmax(probabilities)
-                # Returns clean string, fixing the previous 'list' error [Conversation History]
-                return self.classes_[prediction_index]
-            
-        return "Unknown"
-
-    def _extract_features(self, file_path):
-        """Uses Scipy to avoid librosa deprecation warnings [Conversation History]."""
         try:
-            samplerate, data = wav.read(file_path)
-            # Standardizing features for the Random Forest
-            return np.mean(data.reshape(-1, 40), axis=0) if data.size > 0 else None
-        except Exception:
-            return None
+            sample_rate, test_data = wavfile.read(test_file_path)
+            test_fingerprint = self._get_fingerprint(test_data)
+            
+            best_match = "Unknown"
+            closest_diff = float('inf')
+            
+            # Threshold for similarity - adjust this to increase accuracy
+            threshold = 0.5 
+
+            for label, ref_fingerprint in self.reference_data.items():
+                diff = abs(ref_fingerprint - test_fingerprint)
+                if diff < closest_diff and diff < threshold:
+                    closest_diff = diff
+                    best_match = label
+            
+            # MISTAKE FIX: Ensure return is a clean string [History]
+            return str(best_match)
+            
+        except Exception as e:
+            return "Unknown"
